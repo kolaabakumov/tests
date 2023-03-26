@@ -1,0 +1,128 @@
+id,title,description,preconditions,postconditions,tags,priority,severity,type,behavior,automation,status,is_flaky,layer,steps_type,steps_actions,steps_result,steps_data,milestone_id,milestone,suite_id,suite_parent_id,suite,suite_without_cases,parameters
+1,"Успешное получение списка всех пользователей",,"Открыт Postman
+Создана коллекция для GET-запросов
+Используемый для тестирования URL: [https://reqres.in/api/users?page=2](https://reqres.in/api/users?page=2)",,,high,critical,functional,undefined,is-not-automated,actual,no,api,classic,"1. Выполнить HTTP-запрос GET на указанный URL
+2. Проверить в [https://reqres.in/api/users?page=2](https://reqres.in/api/users?page=2),что это именно те пользователи, которые указаны
+","1. Статус результата 200 ОК
+В теле ответа JSON формата содержится массив из 6 пользователей:
+{
+ ""page"": 2,
+ ""per_page"": 6,
+ ""total"": 12,
+ ""total_pages"": 2,
+ ""data"": [
+ {
+ ""id"": 7,
+ ""email"": ""michael.lawson@reqres.in"",
+ ""first_name"": ""Michael"",
+ ""last_name"": ""Lawson"",
+ ""avatar"": ""https://reqres.in/img/faces/7-image.jpg""
+ },
+ {
+ ""id"": 8,
+ ""email"": ""lindsay.ferguson@reqres.in"",
+ ""first_name"": ""Lindsay"",
+ ""last_name"": ""Ferguson"",
+ ""avatar"": ""https://reqres.in/img/faces/8-image.jpg""
+ },
+ {
+ ""id"": 9,
+ ""email"": ""tobias.funke@reqres.in"",
+ ""first_name"": ""Tobias"",
+ ""last_name"": ""Funke"",
+ ""avatar"": ""https://reqres.in/img/faces/9-image.jpg""
+ },
+ {
+ ""id"": 10,
+ ""email"": ""byron.fields@reqres.in"",
+ ""first_name"": ""Byron"",
+ ""last_name"": ""Fields"",
+ ""avatar"": ""https://reqres.in/img/faces/10-image.jpg""
+ },
+ {
+ ""id"": 11,
+ ""email"": ""george.edwards@reqres.in"",
+ ""first_name"": ""George"",
+ ""last_name"": ""Edwards"",
+ ""avatar"": ""https://reqres.in/img/faces/11-image.jpg""
+ },
+ {
+ ""id"": 12,
+ ""email"": ""rachel.howell@reqres.in"",
+ ""first_name"": ""Rachel"",
+ ""last_name"": ""Howell"",
+ ""avatar"": ""https://reqres.in/img/faces/12-image.jpg""
+ }
+ ],
+ ""support"": {
+ ""url"": ""https://reqres.in/#support-heading"",
+ ""text"": ""To keep ReqRes free, contributions towards server costs are appreciated!""
+ }
+}
+2. Список пользователей, пришедших в ответе, совпадает со списком пользователей на [https://reqres.in/api/users?page=2](https://reqres.in/api/users?page=2)
+","1. 
+2. 
+",,,,,,,
+2,"Успешное получение в теле ответа данных одного пользователя",,"Открыт Postman
+Создана коллекция для GET-запросов
+Используемый для тестирования URL:[https://reqres.in/api/users/3](https://reqres.in/api/users/3)",,,high,critical,functional,undefined,is-not-automated,actual,no,api,classic,"1. Выполнить HTTP-запрос методом GET
+2. Проверить в [https://reqres.in/api/users/3](https://reqres.in/api/users/3) что это именно тот пользователь
+","1. Статус результата 200 ОК
+В теле в json-формате содержатся данные на запрашиваемого пользователя:
+{
+ ""data"": {
+ ""id"": 3,
+ ""email"": ""emma.wong@reqres.in"",
+ ""first_name"": ""Emma"",
+ ""last_name"": ""Wong"",
+ ""avatar"": ""https://reqres.in/img/faces/3-image.jpg""
+ },
+ ""support"": {
+ ""url"": ""https://reqres.in/#support-heading"",
+ ""text"": ""To keep ReqRes free, contributions towards server costs are appreciated!""
+ }
+}
+2. Данные на пользователя, пришедшие в ответе, совпадают с данными пользователя на [https://reqres.in/api/users/3](https://reqres.in/api/users/3)
+","1. 
+2. 
+",,,,,,,
+3,"Новый юзер успешно создается",,"Открыт Postman
+Создана папка POST-requests для выполнения в ней запросов
+Используемый для тестирования URL:[https://reqres.in/api/users](https://reqres.in/api/users)
+Используемые для тестирования данные:
+
+```
+{
+    ""name"": ""morpheus"",
+    ""job"": ""leader""
+}
+```",,,high,critical,functional,undefined,is-not-automated,actual,no,api,classic,"1. Выполнить HTTP-запрос методом POST на указанный URL
+2. Проверить в [https://reqres.in/api/users](https://reqres.in/api/users) что это именно тот пользователь, который указан в документации
+","1. Отражается статус ответа 201 Created. Отправленные на сервер в теле запроса данные показаны в теле ответа. Также в ответе содержится id нового пользователя и время его создания.
+2. Данные нового пользователя, пришедшие в ответе, совпадают с данными в документации на [https://reqres.in/](https://reqres.in/)
+","1. 
+2. 
+",,,,,,,
+4,"Успешное обновление данных пользователя",,"Открыт Postman
+Используемый для тестирования URL:[https://reqres.in/api/users/2](https://reqres.in/api/users/2)
+Создан PUT-запрос с данными:
+
+```
+{
+    ""name"": ""morpheus"",
+    ""job"": ""zion resident""
+}
+```",,,high,critical,functional,undefined,is-not-automated,actual,no,api,classic,"1. Выполнить HTTP-запрос методом PUT на указанный URL. В качестве данных для подстановки в тело запроса использовать следующие данные:
+
+```
+{
+    ""name"": ""morpheus"",
+    ""job"": ""zion resident""
+}
+```
+2. Проверить в документации, что в теле ответа пришли те данные, которые указаны в документации на [https://reqres.in/](https://reqres.in/)
+","1. Отображается статус ответа 200 OK. Отправленные на сервер в теле запроса данные показаны в теле ответа. Также в ответе содержится дата и время обновления данных.
+2. Данные пользователя, пришедшие в ответе, совпадают с данными в документации на [https://reqres.in/](https://reqres.in/).
+","1. 
+2. 
+",,,,,,,
